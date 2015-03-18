@@ -1,3 +1,10 @@
+zshrc
+-----
+
+```sh
+ln -s ~/.dotfiles/.zshrc ~/.zshrc
+```
+
 vimrc
 -----
 
