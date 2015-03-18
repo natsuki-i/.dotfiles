@@ -43,6 +43,7 @@ set hidden
 " key mappings
 let mapleader=","
 noremap ; :
+vnoremap ; :
 
 " NeoBundle
 set nocompatible
@@ -128,9 +129,12 @@ autocmd BufRead,BufNewFile *.slim set filetype=slim
 autocmd BufRead,BufNewFile *.coffee set filetype=coffee
 autocmd FileType ruby,haml,slim,coffee setlocal sw=2 sts=2 ts=2 et makeprg=noglob\ rake
 
+autocmd FileType c,cpp setlocal sw=4 sts=4 ts=4 noet
+
 " 色指定
 set background=dark
 colorscheme molokai
+syntax on
 hi Normal ctermbg=none
 hi Visual ctermbg=252 ctermfg=232
 hi Pmenu ctermbg=238
