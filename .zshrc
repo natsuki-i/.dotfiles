@@ -85,6 +85,24 @@ if (( $+commands[direnv] )) ; then
   eval "$(direnv hook zsh)"
 fi
 
+# gnu tools
+cmds=("[" base64 basename cat chcon chgrp chmod chown chroot cksum comm cp csplit cut date dd df dir dircolors md5sum)
+cmds=($cmds dirname du echo env expand expr factor false find fmt fold head hostid id install join link ln logname)
+cmds=($cmds mkdir mkfifo mknod mktemp mv nice nl nohup nproc numfmt od paste pathchk pinky pr printenv printf ptx pwd)
+cmds=($cmds readlink realpath rm rmdir runcon seq sha1sum sha224sum sha256sum sha384sum sha512sum shred shuf sleep)
+cmds=($cmds sort split stat stdbuf stty sum sync tac tail tee test timeout touch tr true truncate tsort tty uname)
+cmds=($cmds unexpand uniq unlink users vdir wc who whoami yes)
+for cmd in $cmds; do
+  if (( $+commands[g$cmd] )) ; then
+    alias $cmd=g$cmd
+  fi
+done
+
+# gls
+if (( $+commands[gls] )) ; then
+  alias ls="gls -h --color"
+fi
+
 # ggrep
 if (( $+commands[ggrep] )) ; then
   alias grep="ggrep --color"
