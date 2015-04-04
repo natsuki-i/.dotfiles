@@ -99,7 +99,7 @@ for cmd in $cmds; do
 done
 
 # g[
-if [ ${+commands[g\[]} ] ; then
+if (( ${+commands[g\[]} )) ; then
   alias "["="g\["
 fi
 
