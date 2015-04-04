@@ -86,7 +86,7 @@ if (( $+commands[direnv] )) ; then
 fi
 
 # gnu tools
-cmds=(base64 basename cat chcon chgrp chmod chown chroot cksum comm cp csplit cut date dd df dir dircolors md5sum)
+cmds=(base64 basename cat chcon chgrp chmod chown chroot cksum comm cp csplit cut date dd dir dircolors md5sum)
 cmds=($cmds dirname du echo env expand expr factor false find fmt fold head hostid id install join link ln logname)
 cmds=($cmds mkdir mkfifo mknod mktemp mv nice nl nohup nproc numfmt od paste pathchk pinky pr printenv printf ptx pwd)
 cmds=($cmds readlink realpath rm rmdir runcon seq sha1sum sha224sum sha256sum sha384sum sha512sum shred shuf sleep)
@@ -101,6 +101,11 @@ done
 # g[
 if [ ${+commands[g\[]} ] ; then
   alias "["="g\["
+fi
+
+# df
+if (( $+commands[gdf] )) ; then
+  alias df="gdf -h"
 fi
 
 # gls
