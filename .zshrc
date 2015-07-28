@@ -85,38 +85,40 @@ if (( $+commands[direnv] )) ; then
   eval "$(direnv hook zsh)"
 fi
 
-# gnu tools
-cmds=(base64 basename cat chcon chgrp chmod chown chroot cksum comm cp csplit cut date dd dir dircolors md5sum)
-cmds=($cmds dirname du echo env expand expr factor false find fmt fold head hostid id install join link ln logname)
-cmds=($cmds mkdir mkfifo mknod mktemp mv nice nl nohup nproc numfmt od paste pathchk pinky pr printenv printf ptx pwd)
-cmds=($cmds readlink realpath rm rmdir runcon seq sha1sum sha224sum sha256sum sha384sum sha512sum shred shuf sleep)
-cmds=($cmds sort split stat stdbuf stty sum sync tac tail tee test timeout touch tr true truncate tsort tty uname)
-cmds=($cmds unexpand uniq unlink users vdir wc who whoami yes)
-for cmd in $cmds; do
-  if (( $+commands[g$cmd] )) ; then
-    alias $cmd=g$cmd
+function use_gnu_tools() {
+  # BSD系が面倒になったらこの関数を呼び出す
+  cmds=(base64 basename cat chcon chgrp chmod chown chroot cksum comm cp csplit cut date dd dir dircolors md5sum)
+  cmds=($cmds dirname du echo env expand expr factor false find fmt fold head hostid id install join link ln logname)
+  cmds=($cmds mkdir mkfifo mknod mktemp mv nice nl nohup nproc numfmt od paste pathchk pinky pr printenv printf ptx pwd)
+  cmds=($cmds readlink realpath rm rmdir runcon seq sha1sum sha224sum sha256sum sha384sum sha512sum shred shuf sleep)
+  cmds=($cmds sort split stat stdbuf stty sum sync tac tail tee test timeout touch tr true truncate tsort tty uname)
+  cmds=($cmds unexpand uniq unlink users vdir wc who whoami yes)
+  for cmd in $cmds; do
+    if (( $+commands[g$cmd] )) ; then
+      alias $cmd=g$cmd
+    fi
+  done
+
+  # g[
+  if (( ${+commands[g\[]} )) ; then
+    alias "["="g\["
   fi
-done
 
-# g[
-if (( ${+commands[g\[]} )) ; then
-  alias "["="g\["
-fi
+  # df
+  if (( $+commands[gdf] )) ; then
+    alias df="gdf -h"
+  fi
 
-# df
-if (( $+commands[gdf] )) ; then
-  alias df="gdf -h"
-fi
+  # gls
+  if (( $+commands[gls] )) ; then
+    alias ls="gls -h --color"
+  fi
 
-# gls
-if (( $+commands[gls] )) ; then
-  alias ls="gls -h --color"
-fi
-
-# ggrep
-if (( $+commands[ggrep] )) ; then
-  alias grep="ggrep --color"
-fi
+  # ggrep
+  if (( $+commands[ggrep] )) ; then
+    alias grep="ggrep --color"
+  fi
+}
 
 function do_enter() {
   if [ -n "$BUFFER" ]; then
