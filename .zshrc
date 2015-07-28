@@ -17,6 +17,13 @@ export EDITOR=vim
 export LESS="-R"
 export PATH="$HOME/.local/bin:$PATH"
 
+# ターミナルの色
+if [ -e /usr/share/terminfo/x/xterm-256color ]; then
+  export TERM=xterm-256color
+else
+  export TERM=xterm-color
+fi
+
 # 補完
 zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
 zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b'
