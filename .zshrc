@@ -92,6 +92,11 @@ if (( $+commands[direnv] )) ; then
   eval "$(direnv hook zsh)"
 fi
 
+# keychain
+if (( $+commands[keychain] )); then
+  eval $(keychain --eval)
+fi
+
 function use_gnu_tools() {
   # BSD系が面倒になったらこの関数を呼び出す
   cmds=(base64 basename cat chcon chgrp chmod chown chroot cksum comm cp csplit cut date dd dir dircolors md5sum)
