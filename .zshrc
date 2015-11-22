@@ -80,6 +80,8 @@ alias q='exit'
 alias curl='curl -s'
 alias -g G='| grep --line-buffered' H='| head' T='| tail' L='| less'
 alias -g JQ='| noglob jq' JQ.='JQ .'
+alias ...='../..'
+alias ....='../../..'
 
 # rbenv
 if [ -e ~/.rbenv ] ; then
