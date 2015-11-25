@@ -33,6 +33,8 @@ set statusline+=%{'['.(&fenc!=''?&fenc:&enc).']['.&fileformat.']'}
 set statusline+=%=%l/%L,%c%V%8P
 "set showtabline=2
 set wildmenu
+set wildignore=*.o,*.lo,*.a,*.so
+set wildmode=list:longest
 highlight Pmenu ctermbg=magenta
 highlight PmenuSel ctermbg=blue
 
