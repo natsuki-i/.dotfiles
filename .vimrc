@@ -131,8 +131,6 @@ autocmd BufRead,BufNewFile *.slim set filetype=slim
 autocmd BufRead,BufNewFile *.coffee set filetype=coffee
 autocmd FileType ruby,haml,slim,coffee setlocal sw=2 sts=2 ts=2 et makeprg=noglob\ rake
 
-autocmd FileType c,cpp setlocal sw=4 sts=4 ts=4 noet
-
 " 色指定
 set background=dark
 colorscheme molokai
