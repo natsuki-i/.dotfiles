@@ -35,6 +35,7 @@ set statusline+=%=%l/%L,%c%V%8P
 set wildmenu
 set wildignore=*.o,*.lo,*.a,*.so
 set wildmode=list:longest
+set wildignorecase
 highlight Pmenu ctermbg=magenta
 highlight PmenuSel ctermbg=blue
 
