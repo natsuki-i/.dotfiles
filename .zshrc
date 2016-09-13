@@ -83,6 +83,16 @@ alias -g JQ='| noglob jq' JQ.='JQ .'
 alias ...='../..'
 alias ....='../../..'
 
+if (( $+commands[pbcopy] )) ; then
+  alias -g C='pbcopy'
+  alias -g C='pbpaste'
+fi
+
+if (( $+commands[xsel] )) ; then
+  alias -g C='xsel --input --clipboard'
+  alias -g P='xsel --clipboard'
+fi
+
 # rbenv
 if [ -e ~/.rbenv ] ; then
   export PATH="$HOME/.rbenv/bin:$PATH"
