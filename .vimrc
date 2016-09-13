@@ -73,6 +73,8 @@ NeoBundle "slim-template/vim-slim"
 NeoBundle "kchmck/vim-coffee-script"
 NeoBundle "nathanaelkane/vim-indent-guides"
 NeoBundle 'tomasr/molokai'
+NeoBundle 'lambdatoast/elm.vim'
+NeoBundle 'elixir-lang/vim-elixir'
 
 call neobundle#end()
 
