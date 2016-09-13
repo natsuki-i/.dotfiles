@@ -3,6 +3,9 @@ Install
 -------
 
 ```sh
+yum install xsel # centos
+brew install reattach-to-user-namespace # osx
+
 git clone --recursive https://github.com/natsuki-i/.dotfiles.git ~/.dotfiles
 ```
 
