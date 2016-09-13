@@ -127,6 +127,16 @@ if (( $+commands[peco] )); then
   }
   zle -N  history-selection
   bindkey "^R" history-selection
+
+  function bookmark() {
+    pwd >> $HOME/.bookmark
+  }
+  function bookmark-selection() {
+    BUFFER="cd `cat $HOME/.bookmark | peco --rcfile=$HOME/.dotfiles/peco.json`"
+    zle accept-line
+  }
+  zle -N bookmark-selection
+  bindkey "^B" bookmark-selection
 fi
 
 function use_gnu_tools() {
