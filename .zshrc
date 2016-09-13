@@ -15,7 +15,8 @@ setopt noautoremoveslash
 export LANG=ja_JP.UTF-8
 export EDITOR=vim
 export LESS="-R"
-export PATH="$HOME/.local/bin:$PATH"
+export GOPATH="$HOME/local/go"
+export PATH="$HOME/.local/bin:$GOPATH/bin:$PATH"
 
 # ターミナルの色
 if [ -e /usr/share/terminfo/*/xterm-256color ]; then
@@ -111,6 +112,21 @@ fi
 
 if [ -e $HOME/.kiex/scripts/kiex ] ; then
   source "$HOME/.kiex/scripts/kiex"
+fi
+
+if (( $+commands[peco] )); then
+  alias -g I='| peco --rcfile=$HOME/.dotfiles/peco.json'
+  function history-selection() {
+    local query=""
+    if [ -n "$BUFFER" ]; then
+      query="--query"
+    fi
+    BUFFER=`history -n 1 | awk '!a[$0]++' | peco --rcfile=$HOME/.dotfiles/peco.json $query $BUFFER`
+    CURSOR=$#BUFFER
+    zle reset-prompt
+  }
+  zle -N  history-selection
+  bindkey "^R" history-selection
 fi
 
 function use_gnu_tools() {

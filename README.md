@@ -3,8 +3,10 @@ Install
 -------
 
 ```sh
-yum install xsel # centos
-brew install reattach-to-user-namespace # osx
+yum install xsel golang # centos
+brew install reattach-to-user-namespace go # osx
+
+go get github.com/peco/peco/cmd/peco
 
 git clone --recursive https://github.com/natsuki-i/.dotfiles.git ~/.dotfiles
 ```

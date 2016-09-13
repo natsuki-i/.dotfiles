@@ -1,0 +1,7 @@
+{
+  "Prompt": "(*'-') <",
+  "StickySelection": true,
+  "Keymap": {
+    "C-j": "peco.Finish"
+  }
+}
