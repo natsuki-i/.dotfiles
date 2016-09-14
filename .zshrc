@@ -86,7 +86,7 @@ alias ....='../../..'
 
 if (( $+commands[pbcopy] )) ; then
   alias -g C='pbcopy'
-  alias -g C='pbpaste'
+  alias -g P='pbpaste'
 fi
 
 if (( $+commands[xsel] )) ; then
