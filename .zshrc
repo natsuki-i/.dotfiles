@@ -12,7 +12,16 @@ setopt list_packed
 setopt nolistbeep
 setopt noautoremoveslash
 
-export LANG=ja_JP.UTF-8
+case $TERM in
+linux)
+  export LANG=C
+  ;;
+*)
+  export LANG=ja_JP.UTF-8
+  ;;
+esac
+
+
 export EDITOR=vim
 export LESS="-R"
 export GOPATH="$HOME/local/go"
