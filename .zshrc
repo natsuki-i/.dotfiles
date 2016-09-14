@@ -121,7 +121,7 @@ if (( $+commands[peco] )); then
     if [ -n "$BUFFER" ]; then
       query="--query"
     fi
-    BUFFER=`history -n 1 | awk '!a[$0]++' | peco --rcfile=$HOME/.dotfiles/peco.json $query $BUFFER`
+    BUFFER=`history -n 1 | tac | awk '!a[$0]++' | peco --rcfile=$HOME/.dotfiles/peco.json $query $BUFFER`
     CURSOR=$#BUFFER
     zle reset-prompt
   }
