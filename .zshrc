@@ -24,7 +24,7 @@ esac
 
 export EDITOR=vim
 export LESS="-R"
-export GOPATH="$HOME/local/go"
+export GOPATH="$HOME/.local/go"
 export PATH="$HOME/.local/bin:$GOPATH/bin:$PATH"
 
 # ターミナルの色
