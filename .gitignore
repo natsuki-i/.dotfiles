@@ -7,3 +7,8 @@
 /.vim/.bundle
 /.vim/yankring_history_v2.txt
 /.vim/.netrwhist
+
+/.xmonad/*.o
+/.xmonad/*.hi
+/.xmonad/xmonad.errors
+/.xmonad/xmonad-*

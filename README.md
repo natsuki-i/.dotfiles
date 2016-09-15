@@ -5,6 +5,7 @@ Install
 ```sh
 yum install xsel golang # centos
 brew install reattach-to-user-namespace go # osx
+pacman -S xsel go # archlinux
 
 go get github.com/peco/peco/cmd/peco
 
@@ -31,4 +32,19 @@ make -f make_unix.mak
 
 ```sh
 ln -s ~/.dotfiles/.tmux.conf ~/.tmux.conf
+```
+
+Arch Linux Desktop Environment
+------------------------------
+
+```sh
+# window manager
+sudo pacman -S xmonad xmonad-contrib xmobar dmenu
+
+# input method
+sudo pacman -S fcitx-im fcitx-configtool fcitx-skk skk-jisyo skktools
+
+ln -s ~/.dotfiles/.xinitrc ~/.xinitrc
+ln -s ~/.dotfiles/.xmonad ~/.xmonad
+ln -s ~/.dotfiles/.Xdefaults ~/.Xdefaults
 ```

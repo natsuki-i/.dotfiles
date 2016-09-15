@@ -1,0 +1,29 @@
+Config
+  { font = "xft:mikachan:bold"
+  , additionalFonts =
+    [ "xft:Noto Sans CJK JP:bold"
+    , "xft:Noto Emoji"
+    ]
+  , bgColor = "black"
+  , fgColor = "grey"
+  , alpha = 204
+  , position = Top
+  , lowerOnStart = False
+  , commands =
+    [ Run MultiCpu [ "--template" , "Cpu: <total0>% <total1>% <total2>% <total3>%"
+                   , "--Low", "50"
+                   , "--High", "85"
+                   , "--low", "darkgreen"
+                   , "--normal", "darkorange"
+                   , "--high", "darkred"
+                   ] 10
+    , Run Memory ["-t", "Mem: <usedratio>%"] 10
+    , Run Swap [] 10
+    , Run Date "%Y-%m-%d %H:%M:%S" "date" 10
+    , Run Network "enp0s3" [] 10
+    , Run StdinReader
+    ]
+  , sepChar = "%"
+  , alignSep = "}{"
+  , template = " %StdinReader% }{ %enp0s3% | %multicpu% | %memory% %swap% | <fc=#ee9a00>%date%</fc> "
+  }

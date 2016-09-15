@@ -1,0 +1,21 @@
+! Xft
+Xft.dpi:            96
+Xft.antialias:      true
+Xft.rgba:           rgb
+Xft.hinting:        true
+Xft.hintstyle:      hintslight
+
+! URxvt
+URxvt*foreground:        #CCCCCC
+URxvt*background:        #1B1D1E
+
+URxvt.url-select.launcher: firefox
+URxvt.url-select.underline: true
+
+URxvt*font:         xft:mikachan:size=13,xft:Noto Sans Mono CJK JP:size=13,xft:Noto Emoji:size=13
+URxvt*letterSpace:  -1
+
+URxvt*shading: 20
+URxvt*inheritPixmap: True
+
+URxvt.preeditType: OverTheSpot
