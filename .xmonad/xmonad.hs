@@ -15,8 +15,7 @@ import XMonad.Util.Run(spawnPipe)
 
 myModMask = mod4Mask -- left super key
 myTerminal = "urxvt"
-myWorkspaces = [] ++ map show [5..10]
-
+myWorkspaces = ["term", "web", "mail", "ide"] ++ map show [5..10]
 
 main :: IO ()
 main = do
