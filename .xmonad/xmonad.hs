@@ -2,10 +2,13 @@
 
 import qualified Data.Map as M
 
+import Control.Monad(liftM2)
+
 import System.Exit
 import System.IO
 
 import XMonad
+import XMonad.Actions.WindowGo
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
@@ -14,13 +17,14 @@ import XMonad.Layout.Gaps
 import XMonad.Layout.ResizableTile
 import XMonad.Layout.Simplest
 import XMonad.Layout.Spacing
+import XMonad.ManageHook
 import qualified XMonad.StackSet as W
 import XMonad.Util.EZConfig(additionalKeys)
 import XMonad.Util.Run(spawnPipe)
 
 myModMask = mod4Mask -- left super key
 myTerminal = "urxvt"
-myWorkspaces = ["term", "web", "mail", "ide"] ++ map show [5..10]
+myWorkspaces = ["term", "ide"] ++ map show [3..7] ++ ["web", "mail"]
 
 main :: IO ()
 main = do
@@ -30,13 +34,20 @@ main = do
     , modMask     = myModMask
     , borderWidth = 0
     , focusFollowsMouse = True
-    , manageHook = manageDocks <+> manageHook defaultConfig
+    , manageHook = manageDocks <+> myManageHook <+> manageHook defaultConfig
     , layoutHook = avoidStruts $ myLayout
     , logHook = myLogHook xmproc
     , workspaces = myWorkspaces
     , keys = myKeys
     , mouseBindings = myMouseBindings
     }
+
+myManageHook = composeAll
+  [ className =? "Firefox" --> viewShift "web"
+  , className =? "Thunderbird" --> viewShift "mail"
+  , className =? "Xmessage" --> doFloat
+  ]
+  where viewShift = doF . liftM2 (.) W.view W.shift
 
 myLayout = spacing 8 $
   gaps [(U, 2), (D, 1), (L, 1), (R, 1)] $
@@ -55,6 +66,9 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   , (( modMask .|. controlMask,   xK_l      ), spawn "xscreensaver-command -lock")
   , (( modMask .|. shiftMask,     xK_c      ), kill)
 
+  , (( modMask,                   xK_b      ), runOrRaise "firefox" (className =? "Firefox"))
+  , (( modMask,                   xK_m      ), runOrRaise "thunderbird" (className =? "Thunderbird"))
+
   , (( modMask,                   xK_space  ), sendMessage NextLayout)
   , (( modMask .|. shiftMask,     xK_space  ), setLayout $ XMonad.layoutHook conf)
   , (( modMask,                   xK_n      ), refresh)
@@ -63,7 +77,6 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   , (( modMask .|. shiftMask,     xK_Tab    ), windows W.focusUp)
   , (( modMask,                   xK_j      ), windows W.focusDown)
   , (( modMask,                   xK_k      ), windows W.focusUp)
-  , (( modMask,                   xK_m      ), windows W.focusMaster)
 
   , (( modMask,                   xK_Return ), windows W.swapMaster)
   , (( modMask .|. shiftMask,     xK_j      ), windows W.swapDown)
@@ -108,6 +121,9 @@ help = unlines
   , "Mod-p              launch dmenu"
   , "Mod-Control-l      lock screen"
   , "Mod-Shift-c        close window"
+  , "Mod-b              open firefox"
+  , "Mod-m              open mailer"
+  , ""
   , "Mod-Space          rotate layouts"
   , "Mod-Shift-Space    reset layouts"
   , "Mod-n              resize/refresh windows"
@@ -116,7 +132,6 @@ help = unlines
   , "Mod-Shift-Tab      move focus to prev window"
   , "Mod-j              move focus to next window"
   , "Mod-k              move focus to prev window"
-  , "Mod-m              move focus to master window"
   , ""
   , "Mod-Return         swap the focused window and the master window"
   , "Mod-Shift-j        swap the focused window and the master window"
