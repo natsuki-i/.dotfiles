@@ -19,3 +19,6 @@ URxvt*shading: 20
 URxvt*inheritPixmap: True
 
 URxvt.preeditType: OverTheSpot
+
+! XMessage
+xmessage*international: True
