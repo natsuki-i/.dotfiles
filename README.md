@@ -12,6 +12,12 @@ go get github.com/peco/peco/cmd/peco
 git clone --recursive https://github.com/natsuki-i/.dotfiles.git ~/.dotfiles
 ```
 
+### gpg
+
+```sh
+ln -s ~/.dotfiles/gpg-agent.conf ~/.gnupg/gpg-agent.conf
+```
+
 ### zshrc
 
 ```sh
