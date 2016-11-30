@@ -25,7 +25,8 @@ esac
 export EDITOR=vim
 export LESS="-R"
 export GOPATH="$HOME/.local/go"
-export PATH="$HOME/.local/bin:$GOPATH/bin:$PATH"
+export NPM_PACKAGES="$HOME/.local/npm-packages"
+export PATH="$HOME/.local/bin:$GOPATH/bin:$NPM_PACKAGES/bin:$PATH"
 
 # ターミナルの色
 if [ -e /usr/share/terminfo/*/xterm-256color ]; then

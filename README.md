@@ -40,6 +40,12 @@ make -f make_unix.mak
 ln -s ~/.dotfiles/.tmux.conf ~/.tmux.conf
 ```
 
+### npm
+
+```sh
+ln -s ~/.dotfiles/.npmrc ~/.npmrc
+```
+
 Arch Linux Desktop Environment
 ------------------------------
 
