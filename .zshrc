@@ -104,6 +104,10 @@ if (( $+commands[xsel] )) ; then
   alias -g P='xsel --clipboard'
 fi
 
+if (( $+commands[xdg-open] )) ; then
+  alias open='xdg-open'
+fi
+
 # rbenv
 if [ -e ~/.rbenv ] ; then
   export PATH="$HOME/.rbenv/bin:$PATH"
