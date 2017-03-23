@@ -4,8 +4,6 @@
 *.DS_Store
 *.lock
 
-/.vim/.bundle
-/.vim/yankring_history_v2.txt
 /.vim/.netrwhist
 
 /.xmonad/*.o
