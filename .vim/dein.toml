@@ -18,6 +18,15 @@ repo = 'vim-jp/cpp-vim'
 repo = 'hail2u/vim-css3-syntax'
 
 [[plugins]]
+repo = 'leafgarland/typescript-vim'
+
+[[plugins]]
+repo = 'Quramy/tsuquyomi'
+
+[[plugins]]
+repo = 'ianks/vim-tsx'
+
+[[plugins]]
 repo = 'mxw/vim-jsx'
 
 [[plugins]]
