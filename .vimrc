@@ -89,6 +89,7 @@ autocmd BufNewFile,BufRead Gemfile setf ruby
 autocmd BufRead,BufNewFile *.slim set filetype=slim
 autocmd BufRead,BufNewFile *.coffee set filetype=coffee
 autocmd FileType ruby,haml,slim,coffee setlocal sw=2 sts=2 ts=2 et makeprg=noglob\ rake
+autocmd FileType typescript,markdown setlocal sw=4 sts=4 ts=4 et
 
 " 色指定
 set background=dark
