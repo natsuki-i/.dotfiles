@@ -82,6 +82,9 @@ endif
 let g:yankring_manual_clipboard_check = 1
 let g:yankring_history_dir = "~/.cache"
 
+" Tsuquyomi
+let g:tsuquyomi_completion_detail = 1
+
 filetype plugin on
 filetype indent on
 
