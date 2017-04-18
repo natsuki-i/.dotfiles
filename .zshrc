@@ -122,7 +122,7 @@ fi
 
 # keychain
 if (( $+commands[keychain] )); then
-  eval $(keychain --eval)
+  eval $(keychain --eval --inherit any)
 fi
 
 if [ -e $HOME/.kiex/scripts/kiex ] ; then
