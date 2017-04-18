@@ -23,6 +23,7 @@ esac
 
 
 export EDITOR=vim
+export BROWSER=firefox
 export LESS="-R"
 export GOPATH="$HOME/.local/go"
 export NPM_PACKAGES="$HOME/.local/npm-packages"
