@@ -6,13 +6,42 @@ Xft.hinting:        true
 Xft.hintstyle:      hintslight
 
 ! URxvt
-URxvt*foreground:        #CCCCCC
-URxvt*background:        #1B1D1E
+
+# color theme
+URxvt*foreground:        #cccccc
+URxvt*background:        #1b1d1e
+URxvt*cursorColor:        #8ae234
+URxvt*colorUL:            #8ae234
+URxvt*underlineColor:     #92659a
+! black dark/light
+URxvt*color0:             #2e3436
+URxvt*color8:             #6e706b
+! red dark/light
+URxvt*color1:             #cc0000
+URxvt*color9:             #ef2929
+! green dark/light
+URxvt*color2:             #4e9a06
+URxvt*color10:            #8ae234
+! yellow dark/light
+URxvt*color3:             #edd400
+URxvt*color11:            #fce94f
+! blue dark/light
+URxvt*color4:             #3465a4
+URxvt*color12:            #729fcf
+! magenta dark/light
+URxvt*color5:             #92659a
+URxvt*color13:            #c19fbe
+! cyan dark/light
+URxvt*color6:             #07c7ca
+URxvt*color14:            #63e9e9
+! white dark/light
+URxvt*color7:             #d3d7cf
+URxvt*color15:            #eeeeec
 
 URxvt.url-select.launcher: firefox
 URxvt.url-select.underline: true
 
-URxvt*font:         xft:mikachan:size=13,xft:Noto Sans Mono CJK JP:size=13,xft:Noto Emoji:size=13
+URxvt*font:         xft:mikachan:size=12,xft:Noto Sans Mono CJK JP:size=12,xft:Noto Emoji:size=12
 URxvt*letterSpace:  -1
 
 URxvt*shading: 20
