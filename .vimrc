@@ -1,3 +1,6 @@
+if &compatible
+  set nocompatible
+endif
 
 " タブ
 set tabstop=2
