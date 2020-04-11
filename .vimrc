@@ -88,6 +88,46 @@ let g:yankring_history_dir = "~/.cache"
 " Tsuquyomi
 let g:tsuquyomi_completion_detail = 1
 
+" rust
+let g:rustfmt_autosave = 1
+autocmd FileType rust setlocal omnifunc=lsp#complete
+" autocmd FileType rust imap <expr> . ".\<C-X>\<C-O>"
+autocmd FileType rust imap <expr> : ":\<C-x>\<C-O>"
+
+"rust language server
+if executable('rust-analyzer')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'rust-analyzer',
+        \ 'cmd': {server_info->['rust-analyzer']},
+        \ 'whitelist': ['rust'],
+        \ })
+endif
+
+
+" lsp
+function! s:on_lsp_buffer_enabled() abort
+  setlocal omnifunc=lsp#complete
+  setlocal signcolumn=yes
+  nmap <buffer> gd <plug>(lsp-definition)
+  nmap <buffer> gc <plug>(lsp-declaration)
+  nmap <buffer> gi <plug>(lsp-implementation)
+  nmap <buffer> <f2> <plug>(lsp-rename)
+  nmap <buffer> <C-L>D <plug>(lsp-document-diagnostics)
+  nmap <buffer> <C-L>d <plug>(lsp-peek-definition)
+  nmap <buffer> <C-L>c <plug>(lsp-peek-declaration)
+  nmap <buffer> <C-L>n <plug>(lsp-next-diagnostic)
+  nmap <buffer> <C-L>p <plug>(lsp-previous-diagnostic)
+  nmap <buffer> <C-L>h <plug>(lsp-hover)
+  nmap <buffer> <C-L>a <plug>(lsp-code-action-sync)
+  nmap <buffer> <C-L>r <plug>(lsp-reference)
+endfunction
+
+augroup lsp_install
+  au!
+  autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
+
+
 filetype plugin on
 filetype indent on
 
@@ -118,7 +158,7 @@ let g:indent_guides_space_guides=1
 hi IndentGuidesOdd  ctermbg=239
 hi IndentGuidesEven ctermbg=008
 nmap <silent><Leader>ig <Plug>IndentGuidesToggle
-autocmd FileType coffee,ruby,javascript,slim,haml IndentGuidesEnable
+autocmd FileType coffee,ruby,javascript,slim,haml,rust IndentGuidesEnable
 
 " 80,100,120桁目に線を引く
 set colorcolumn=80,100,120
@@ -172,6 +212,8 @@ autocmd FileType python set fdm=indent fdl=99 cinw=if,elif,else,for,while,try,ex
 hi Folded term=standout ctermfg=4 ctermbg=0
 set fillchars=vert:\|
 set foldtext=getline(v:foldstart)
+
+set completeopt=menuone,preview,noselect,noinsert
 
 " local settings
 if filereadable($HOME.'/.vimrc_local.vim')

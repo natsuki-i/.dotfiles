@@ -70,3 +70,13 @@ repo = 'mattn/emmet-vim'
 
 [[plugins]]
 repo = 'Shougo/vinarise'
+
+[[plugins]]
+repo = 'rust-lang/rust.vim'
+on_ft = 'rust'
+
+[[plugins]]
+repo = 'prabirshrestha/async.vim'
+
+[[plugins]]
+repo = 'prabirshrestha/vim-lsp'
