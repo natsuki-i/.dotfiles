@@ -91,7 +91,7 @@ let g:tsuquyomi_completion_detail = 1
 " rust
 let g:rustfmt_autosave = 1
 autocmd FileType rust setlocal omnifunc=lsp#complete
-" autocmd FileType rust imap <expr> . ".\<C-X>\<C-O>"
+autocmd FileType rust imap <expr> . ".\<C-X>\<C-O>"
 autocmd FileType rust imap <expr> : ":\<C-x>\<C-O>"
 
 "rust language server
@@ -103,23 +103,37 @@ if executable('rust-analyzer')
         \ })
 endif
 
+"typescript language server
+if executable('typescript-language-server')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'typescript-language-server',
+        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
+        \ 'root-uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
+        \ 'whitelist': ['typescript', 'typescript.tsx'],
+        \ })
+endif
+
 
 " lsp
 function! s:on_lsp_buffer_enabled() abort
   setlocal omnifunc=lsp#complete
   setlocal signcolumn=yes
   nmap <buffer> gd <plug>(lsp-definition)
+  nmap <buffer> gt <plug>(lsp-type-definition)
   nmap <buffer> gc <plug>(lsp-declaration)
   nmap <buffer> gi <plug>(lsp-implementation)
   nmap <buffer> <f2> <plug>(lsp-rename)
   nmap <buffer> <C-L>D <plug>(lsp-document-diagnostics)
   nmap <buffer> <C-L>d <plug>(lsp-peek-definition)
+  nmap <buffer> <C-L>t <plug>(lsp-peek-type-definition)
   nmap <buffer> <C-L>c <plug>(lsp-peek-declaration)
   nmap <buffer> <C-L>n <plug>(lsp-next-diagnostic)
   nmap <buffer> <C-L>p <plug>(lsp-previous-diagnostic)
   nmap <buffer> <C-L>h <plug>(lsp-hover)
-  nmap <buffer> <C-L>a <plug>(lsp-code-action-sync)
+  nmap <buffer> <C-L>a <plug>(lsp-code-action)
   nmap <buffer> <C-L>r <plug>(lsp-reference)
+
+  let g:lsp_highlights_enabled = 1
 endfunction
 
 augroup lsp_install
